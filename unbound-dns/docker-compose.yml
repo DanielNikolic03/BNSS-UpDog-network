@@ -1,0 +1,27 @@
+version: "3.9"
+
+networks:
+  BNSS-subnet:
+    external: true
+
+services:
+  unbound:
+    image: mvance/unbound:1.12.0
+    container_name: unbound
+    restart: unless-stopped
+
+    networks:
+      BNSS-subnet:
+        ipv4_address: 172.20.0.3
+
+    ports:
+      - "5353:53/udp"
+      - "5353:53/tcp"
+
+    environment:
+      - NEXTCLOUD_ADMIN_USER=admin
+      - NEXTCLOUD_ADMIN_PASSWORD=supersecretpassword
+      - SQLITE_DATABASE=nextcloud.sqlite
+
+    volumes:
+      - ./config:/opt/unbound/etc/unbound
