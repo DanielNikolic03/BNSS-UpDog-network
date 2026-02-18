@@ -23,7 +23,5 @@ docker exec -u www-data nextcloud php /var/www/html/occ config:system:set force_
 ```
 
 ## Unbound DNS
-```
-cd unbound-dns
-docker compose up -d
-```
+### How to run?
+cd into `unbound-dns` folder and follow the README.
