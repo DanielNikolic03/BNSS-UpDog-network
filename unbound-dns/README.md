@@ -4,6 +4,8 @@ The only action required before starting the container is to change the logging 
 ## 1. Copy conf file and mount container to host
 ```
 mkdir ~/unbound-config
+touch ~/unbound-config/unbound.log
+chmod 600 ~/unbound-config/unbound.log
 ```
 IMPORTANT! Create the `unbound-config` folder in your home folder to avoid OS permission restrictions when copying over the files (from container to host).
 
@@ -24,12 +26,7 @@ docker rm -f unbound-temp
 
 Start and mount the container:
 ```
-docker run -d \
-  --name unbound \
-  -p 53:53/udp \
-  -p 53:53/tcp \
-  -v ~/unbound-config/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro \
-  mvance/unbound:1.12.0
+docker compose up -d
 ```
 
 ## 2. Edit and restart container
