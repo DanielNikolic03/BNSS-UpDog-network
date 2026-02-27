@@ -37,7 +37,16 @@ Restart the container:
 docker restart unbound
 ```
 
-## 3. Test DNS lookup
+## 3. Force DNS lookups through Unbound
+Log into the router config page (router running OpenWRT).
+
+Under `Network -> Interfaces -> wan -> Edit` set the IP of the host computer under "Use custom DNS servers" and disable "Use DNS servers advertised by peers".
+
+And under `Network -> Forwards` remove all addresses under  "DNS Forwards" and add the IP of the host computer.
+
+Save and Apply changes.
+
+## 4. Test DNS lookup
 Running this should give `status: SERVFAIL` because the lookup fails to verify DNSSEC signature.
 ```
 dig @127.0.0.1 dnssec-failed.org
