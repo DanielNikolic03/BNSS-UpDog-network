@@ -12,13 +12,10 @@ services:
 
     networks:
       BNSS-subnet:
-        ipv4_address: 172.20.0.2
-
-    ports:
-      - "8081:80"
+        ipv4_address: 172.20.0.3
 
     volumes:
-      - nextcloud_data:/var/www/html
+      - ~/nextcloud-critical-config/config.php:/usr/src/nextcloud/config/config.php:ro
 
 volumes:
   nextcloud_data:

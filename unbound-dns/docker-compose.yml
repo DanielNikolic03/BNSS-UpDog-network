@@ -12,7 +12,7 @@ services:
 
     networks:
       BNSS-subnet:
-        ipv4_address: 172.20.0.3
+        ipv4_address: 172.20.0.2
 
     ports:
       - "53:53/udp"
@@ -20,7 +20,7 @@ services:
 
     volumes:
       - ~/unbound-config/unbound.conf:/opt/unbound/etc/unbound/unbound.conf:ro
-      # - ~/unbound-config/unbound.log:/opt/unbound/etc/unbound/unbound.log
+      - ~/unbound-config/a-records.conf:/opt/unbound/etc/unbound/a-records.conf:ro
 
     environment:
       - TZ=Europe/Stockholm
