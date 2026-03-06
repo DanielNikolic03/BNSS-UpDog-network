@@ -76,7 +76,7 @@ $CONFIG = [
  */
 'trusted_domains' =>
 	[
-    	'internal.acme.fileshare',
+    	'fileshare.acme.internal',
 	],
 
 'overwriteprotocol' => 'https',

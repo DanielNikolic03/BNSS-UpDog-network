@@ -76,7 +76,7 @@ $CONFIG = [
  */
 'trusted_domains' =>
 	[
-    	'internal.acme.secret',
+    	'secret.acme.internal',
 	],
 
 'overwriteprotocol' => 'https',
