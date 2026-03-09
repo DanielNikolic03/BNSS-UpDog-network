@@ -1,12 +1,10 @@
-version: "3.9"
-
 networks:
   BNSS-subnet:
     external: true
 
 services:
   unbound:
-    image: mvance/unbound:1.12.0
+    image: mvance/unbound:latest
     container_name: unbound
     restart: unless-stopped
 
@@ -25,8 +23,8 @@ services:
     environment:
       - TZ=Europe/Stockholm
 
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "udp://192.168.1.229:10514"
-        tag: "unbound"
+    # logging:
+    #   driver: syslog
+    #   options:
+    #     syslog-address: "udp://192.168.1.229:10514"
+    #     tag: "unbound"
