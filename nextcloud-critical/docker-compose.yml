@@ -29,6 +29,9 @@ services:
     depends_on:
       - db
 
+    ports:
+      - "8081:80"
+
     volumes:
       - ~/nextcloud-critical/config:/var/www/html/config
       - ~/nextcloud-critical/data:/var/www/html/data
