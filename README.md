@@ -8,43 +8,36 @@ cd into `nginx-proxy` folder and follow the README.
 cd into `unbound-dns` folder and follow the README.
 
 # Nextcloud & Nextcloud-critical
-## 1. Create the folder structure
-```
-mkdir ~/nextcloud-config
-touch ~/nextcloud-config/config.php
-mkdir ~/nextcloud-critical-config
-touch ~/nextcloud-critical-config/config.php
-```
-
-## 2. Add the config files
-Replace the corresponding `config.php` into the correct directory.
-
-## 3. Start the containers
+## 1. Start the containers
 ```
 cd nextcloud
 docker compose up -d
+
 cd ../nextcloud-critical
 docker compose up -d
+
 cd ..
 ```
+
 Create an admin account and do the following steps as admin.
 
-## 4. (Both) Enable LDAP
+## 2. (Both) Enable LDAP
 Search for the LDAP app in nextcloud and tell Axel to start the LDAP server.
 ```
 LDAP server address: `192.168.1.161`
 Discover port.
 Username DN: `cn=admin,dc=ldap,dc=local`
 Password: `axel`
+Base DN: `dc=ldap,dc=local`
+Login attributes: `uid`
 ```
 
-## 5. (Nextcloud-critical) Enable TOTP 2FA
+## 3. (Nextcloud-critical) Enable TOTP 2FA
 1. Enable the app `Two-Factor TOTP Provider` under `Your apps`
 2. Click your profile then `Administration -> Security -> Force Two-Factor Authentication`
-3. Force the `employees` group to use 2FA
 
 
-## 6. (Optional) Change language:
+## 4. (Optional) Change language:
 In the container terminal (`docker exec -it nextcloud bash`):
 ```
 docker exec -u www-data nextcloud php /var/www/html/occ config:system:set force_language --value=en

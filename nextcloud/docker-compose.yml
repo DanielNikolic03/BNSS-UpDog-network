@@ -5,17 +5,40 @@ networks:
     external: true
 
 services:
+  db:
+    image: mariadb:10.11
+    container_name: nextcloud_db
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: nextcloudpassword
+    volumes:
+      - ~/nextcloud/db:/var/lib/mysql
+
+    networks:
+      BNSS-subnet:
+        ipv4_address: 172.20.0.11
+
   nextcloud:
     image: nextcloud:28.0.2
     container_name: nextcloud
     restart: unless-stopped
+    depends_on:
+      - db
+
+    volumes:
+      - ~/nextcloud/config:/var/www/html/config
+      - ~/nextcloud/data:/var/www/html/data
+
+    environment:
+      MYSQL_HOST: nextcloud_db
+      MYSQL_DATABASE: nextcloud
+      MYSQL_USER: nextcloud
+      MYSQL_PASSWORD: nextcloudpassword
 
     networks:
       BNSS-subnet:
-        ipv4_address: 172.20.0.4
-
-    volumes:
-      - ~/nextcloud-config/config.php:/usr/src/nextcloud/config/config.php:ro
-
-volumes:
-  nextcloud_data:
+        ipv4_address: 172.20.0.10

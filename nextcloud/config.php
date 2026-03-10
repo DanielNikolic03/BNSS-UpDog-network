@@ -88,7 +88,7 @@ $CONFIG = [
  *
  * Default to ``data/`` in the Nextcloud directory.
  */
-'datadirectory' => '/var/www/nextcloud/data',
+'datadirectory' => '/var/www/html/data',
 
 /**
  * The current version number of your Nextcloud installation. This is set up
@@ -1150,7 +1150,7 @@ $CONFIG = [
  */
 'apps_paths' => [
 	[
-		'path'=> '/var/www/nextcloud/apps',
+		'path'=> '/var/www/html/apps',
 		'url' => '/apps',
 		'writable' => true,
 	],
@@ -2093,7 +2093,7 @@ $CONFIG = [
  *
  * Defaults to ``data/mount.json`` in the Nextcloud directory.
  */
-'mount_file' => '/var/www/nextcloud/data/mount.json',
+'mount_file' => '/var/www/html/data/mount.json',
 
 /**
  * When ``true``, prevent Nextcloud from changing the cache due to changes in
