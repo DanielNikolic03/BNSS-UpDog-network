@@ -8,9 +8,9 @@ services:
     container_name: unbound
     restart: unless-stopped
 
-    networks:
-      BNSS-subnet:
-        ipv4_address: 172.20.0.2
+    # networks:
+    #   BNSS-subnet:
+    #     ipv4_address: 172.20.0.2
 
     ports:
       - "53:53/udp"
