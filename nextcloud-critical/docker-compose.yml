@@ -45,3 +45,9 @@ services:
     networks:
       BNSS-subnet:
         ipv4_address: 172.20.0.20
+
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://192.168.40.174:10514"
+        tag: "nextcloud-critical"

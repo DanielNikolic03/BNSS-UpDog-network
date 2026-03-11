@@ -42,3 +42,9 @@ In the container terminal (`docker exec -it nextcloud bash`):
 ```
 docker exec -u www-data nextcloud php /var/www/html/occ config:system:set force_language --value=en
 ```
+
+# SmallStep
+## Issue new certificate
+`step ca certificate <subject> <cert-file> <key-file>`
+
+Password: `opnsense`
